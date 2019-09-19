@@ -47,6 +47,11 @@ void CardsUI::DrawUI()
 		{
             switch (Event->type)
 			{
+				//Touch screen is pressed. Flip card.
+				case SDL_FINGERDOWN:
+					FlipCard();
+				break;
+				//Button pressed on joycon
                 case SDL_JOYBUTTONDOWN:
                     // https://github.com/devkitPro/SDL/blob/switch-sdl2/src/joystick/switch/SDL_sysjoystick.c#L52
                     // seek for joystick #0

@@ -12,6 +12,7 @@ using namespace std;
 //Vars
 vector <dirent> Files(0);
 int SelectedIndex = 0;
+int TouchY = -1;
 
 class CardSelectUI
 {
@@ -48,6 +49,7 @@ void CardSelectUI::DrawUI()
 		}
 		SelectedCardPath = Files.at(0).d_name;
 		*WindowState = 1;
+		return;
 	}
 	
 	//Scan input
@@ -55,6 +57,11 @@ void CardSelectUI::DrawUI()
 		{
             switch (Event->type)
 			{
+				//Touch screen
+				case SDL_FINGERDOWN:
+				TouchY = Event->tfinger.y * *Height;
+				break;
+				//Joycon button pressed
                 case SDL_JOYBUTTONDOWN:
                     // https://github.com/devkitPro/SDL/blob/switch-sdl2/src/joystick/switch/SDL_sysjoystick.c#L52
                     // seek for joystick #0
@@ -100,8 +107,17 @@ void CardSelectUI::DrawUI()
 	int ItemHeight = *Height / Files.size(); //Note: We don't check if files contains anything but we probably should.
 	for(int i = 0; i < Files.size(); i++)
 	{
+		//Check if user touched the option
+		if(TouchY > i * ItemHeight && TouchY < i * ItemHeight + ItemHeight)
+		{
+			SelectedIndex = i;
+			SelectedCardPath = Files.at(SelectedIndex).d_name;
+			*WindowState = 1;
+			TouchY = -1;
+		}
+		//Set the background color
 		SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
-		//Check if this is the high lighted file
+		//Check if this is the highlighted file
 		if(i == SelectedIndex)
 		{
 			SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
