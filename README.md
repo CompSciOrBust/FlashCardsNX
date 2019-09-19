@@ -19,3 +19,6 @@ Dalton Maag for the [Ubuntu font](https://fonts.google.com/specimen/Ubuntu).
 Everyone in the AtlasNX discord developer chat for helping me with the first version. This is a complete rewrite but I would not have been able to complete the first version without their help because it was my first SDL project.
 
 I got the icon a while ago and I can't remember who made it but it was marked as reuse with modification on Google Images.
+
+## Screenshot
+![Image](https://raw.githubusercontent.com/CompSciOrBust/FlashCardsNX/master/Screenshots/Cards.jpg)!
