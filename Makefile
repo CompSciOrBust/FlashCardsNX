@@ -45,7 +45,7 @@ INCLUDES	:=	include
 ROMFS	:=	romfs
 APP_AUTHOR := CompSciOrBust
 APP_TITLE := Flash Cards NX
-APP_VERSION := 2.1.0
+APP_VERSION := 2.1.1
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------

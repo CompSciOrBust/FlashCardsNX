@@ -65,6 +65,7 @@ void CardsUI::DrawUI()
 							Answers.clear();
 							QuestionNumber = 0;
 							CardNum = 0;
+							IsAnswer = true;
                             *WindowState = 0;
                         }
 						//A pressed
