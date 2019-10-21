@@ -91,7 +91,7 @@ void CardsUI::DrawUI()
 	
 	//Draw the card text
 	SDL_Color TextColour = {0, 0, 0}; 
-	SDL_Surface* CardTextSurface = TTF_RenderText_Blended_Wrapped(CardFont, CurrentText.c_str(), TextColour, BackgroundWidth);
+	SDL_Surface* CardTextSurface = TTF_RenderUTF8_Blended_Wrapped(CardFont, CurrentText.c_str(), TextColour, BackgroundWidth);
 	SDL_Texture* CardTextTexture = SDL_CreateTextureFromSurface(renderer, CardTextSurface);
 	//make new rect size of the text and centered in the background
 	SDL_Rect CardRect = {(BackgroundWidth - CardTextSurface->w) / 2, (BackgroundHeight - CardTextSurface->h) / 2, CardTextSurface->w, CardTextSurface->h};
@@ -107,7 +107,7 @@ void CardsUI::DrawUI()
 	SDL_RenderFillRect(renderer, &Footer);
 	
 	//Draw the footer text
-	SDL_Surface* FooterTextSurface = TTF_RenderText_Blended_Wrapped(FooterFont, "A = Next card\n+ = Exit", TextColour, BackgroundWidth);
+	SDL_Surface* FooterTextSurface = TTF_RenderUTF8_Blended_Wrapped(FooterFont, "A = Next card\n+ = Exit", TextColour, BackgroundWidth);
 	SDL_Texture* FooterTextTexture = SDL_CreateTextureFromSurface(renderer, FooterTextSurface);
 	//make new rect the size of the text and centered vertically in the footer
 	SDL_Rect FooterTextRect = {0, BackgroundHeight + (FooterHeight - FooterTextSurface->h) / 2, FooterTextSurface->w, FooterTextSurface->h};
@@ -117,7 +117,7 @@ void CardsUI::DrawUI()
 	SDL_FreeSurface(FooterTextSurface);
 	//Draw the completion text
 	string CompleteCardsString = "Complete: " + to_string(CardNum) + " / " + to_string(CardCount);
-	SDL_Surface* CompleteTextSurface = TTF_RenderText_Blended_Wrapped(FooterFont, CompleteCardsString.c_str(), TextColour, BackgroundWidth);
+	SDL_Surface* CompleteTextSurface = TTF_RenderUTF8_Blended_Wrapped(FooterFont, CompleteCardsString.c_str(), TextColour, BackgroundWidth);
 	SDL_Texture* CompleteTextTexture = SDL_CreateTextureFromSurface(renderer, CompleteTextSurface);
 	//make new rect the size of the text and centered vertically in the footer
 	FooterTextRect = {BackgroundWidth - CompleteTextSurface->w, BackgroundHeight + (FooterHeight - CompleteTextSurface->h) / 2, CompleteTextSurface->w, CompleteTextSurface->h};
